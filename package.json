@@ -1,0 +1,38 @@
+{
+  "name": "getbetter",
+  "version": "0.0.12",
+  "description": "get 1% better everyday",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosWirama/getbetter.git"
+  },
+  "keywords": [
+    "getbetter"
+  ],
+  "author": "Carlos Wirama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlosWirama/getbetter/issues"
+  },
+  "homepage": "https://github.com/CarlosWirama/getbetter#readme",
+  "dependencies": {
+    "react-router": "^4.3.1",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  }
+}
