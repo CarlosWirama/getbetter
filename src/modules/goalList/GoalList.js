@@ -1,6 +1,7 @@
 import React from "react";
-import { render } from "react-dom";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Grid, Button } from '@material-ui/core';
 
 class GoalList extends React.Component {
   constructor() {
@@ -16,19 +17,24 @@ class GoalList extends React.Component {
   render() {
     const { goalInput } = this.state;
     return (
-      <form>
-        <input
-          id="goal"
-          type="text"
-          value={goalInput}
-          onChange={this.handleChange}
-        />
-        <input type="submit" />
-      </form>
+      <Grid container direction="row" justify="center" alignItems="center">
+        <form>
+          <input
+            id="goal"
+            type="text"
+            value={goalInput}
+            onChange={this.handleChange}
+          />
+          <Button component={React.input} type="submit" variant="contained" color="primary">
+            Add
+          </Button>
+        </form>
+      </Grid>
     );
   }
 }
-export default GoalList;
+const StyledGoalList = styled(GoalList)`
+  background-color: 'black';
+`;
 
-const wrapper = document.getElementById('app');
-wrapper && render(<GoalList />, wrapper);
+export default StyledGoalList;
