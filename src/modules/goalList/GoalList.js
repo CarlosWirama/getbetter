@@ -17,7 +17,7 @@ class GoalList extends React.Component {
   render() {
     const { goalInput } = this.state;
     return (
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid container direction="row" justify="center" alignItems="center" {...this.props} >
         <form>
           <input
             id="goal"
@@ -25,14 +25,26 @@ class GoalList extends React.Component {
             value={goalInput}
             onChange={this.handleChange}
           />
-          <Button component={React.input} type="submit" variant="contained" color="primary">
+          <SubmitButton>
             Add
-          </Button>
+          </SubmitButton>
         </form>
       </Grid>
     );
   }
 }
+
+const SubmitButton = styled(Button).attrs({
+  component: React.input,
+  type: 'submit',
+  variant: 'contained',
+  color: 'primary',
+})`
+  && {
+    margin: 10px;
+  }
+`;
+
 const StyledGoalList = styled(GoalList)`
   background-color: 'black';
 `;
