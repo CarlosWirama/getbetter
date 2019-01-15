@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import GoalList from './modules/goalList/GoalList';
+import MainPage from './pages/MainPage';
 
 const wrapper = document.getElementById('app');
-wrapper && render(<GoalList />, wrapper);
+wrapper && render(<MainPage />, wrapper);

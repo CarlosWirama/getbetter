@@ -1,4 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -17,6 +19,13 @@ module.exports = {
           }
         ]
       }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
     ]
   },
   plugins: [

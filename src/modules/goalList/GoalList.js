@@ -1,52 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Grid, Button } from '@material-ui/core';
+// import styled from "styled-components";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  Checkbox,
+} from '@material-ui/core';
 
 class GoalList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      goal: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value });
-  }
   render() {
-    const { goalInput } = this.state;
+    const { goals, onCheck } = this.props;
     return (
-      <Grid container direction="row" justify="center" alignItems="center" {...this.props} >
-        <form>
-          <input
-            id="goal"
-            type="text"
-            value={goalInput}
-            onChange={this.handleChange}
-          />
-          <SubmitButton>
-            Add
-          </SubmitButton>
-        </form>
-      </Grid>
+      <List {...this.props} >
+        { goals.map(({ title, status }, idx) => (
+          <ListItem button key={idx}>
+            <ListItemText>
+              {title}
+            </ListItemText>
+            <ListItemSecondaryAction>
+              <Checkbox checked={status === 'done'} onChange={() => onCheck(idx)} />
+            </ListItemSecondaryAction>
+          </ListItem>
+        ))}
+      </List>
     );
   }
 }
 
-const SubmitButton = styled(Button).attrs({
-  component: React.input,
-  type: 'submit',
-  variant: 'contained',
-  color: 'primary',
-})`
-  && {
-    margin: 10px;
-  }
-`;
+GoalList.propTypes = {
+  goals: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired, // 'Make February's Medium post'
+    status: PropTypes.string.isRequired, // 'todo'
+  })),
+  onCheck: PropTypes.func.isRequired,
+}
 
-const StyledGoalList = styled(GoalList)`
-  background-color: 'black';
-`;
+// const StyledGoalList = styled(GoalList)`
+//   background-color: 'black';
+// `;
 
-export default StyledGoalList;
+export default GoalList;
